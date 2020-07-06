@@ -1,7 +1,7 @@
 import { ADD, REMOVE, EDIT, FETCH_LIST, SHOW_ERROR } from "./type";
 import axios from "axios";
 
-const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // I faced a CORS issue, to solve it used this url as a proxy
+const proxyUrl = "https://cors-anywhere.herokuapp.com/"; // I faced a CORS issue, to solve it used this url as a proxy
 
 // export const AddStudentAC = (newStudent) => {
 //   return {
@@ -10,35 +10,36 @@ const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // I faced a CORS issue
 //   };
 // };
 
-
-export const EditAC = (student) => {
-  return async (dispatch) => {
+export const EditRequestAC = student => {
+  return async dispatch => {
     try {
-      const response = await axios({
-        method: "UPDATE",
-        url: "https://frontend-test.netbox.ru/",
-        data: {
-          id: student.id,
-          name: student.name,
-          age: student.age,
-          phone: student.phone,
-          email: student.email,
-        },
-      });
-      console.log(response);
+      await axios(
+        proxyUrl + "https://frontend-test.netbox.ru/",
+        {
+          method: "UPDATE",
+          data: {
+            id: student.id,
+            name: student.name,
+            age: student.age,
+            phone: student.phone,
+            email: student.email,
+          },
+        }
+      );
+      dispatch({type: EDIT, paylaod: student})
     } catch (e) {
       console.log(e);
     }
   };
 };
 
-export const RemoveStudentRequestAC = id => {
-  return async dispatch => {
+export const RemoveStudentRequestAC = (id) => {
+  return async (dispatch) => {
     try {
-      const response = await fetch(proxyUrl + 'https://frontend-test.netbox.ru/', {
-          method: 'POST', // DELETE method is not allowed, that's why I used POST method
-          body: {id}
-      })
+      await axios(proxyUrl + "https://frontend-test.netbox.ru/", {
+        method: "POST", // DELETE method is not allowed, that's why I used POST method
+        data: { id },
+      });
       dispatch({ type: REMOVE, payload: id });
     } catch (e) {
       dispatch({

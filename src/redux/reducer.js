@@ -1,7 +1,7 @@
 import { ADD, REMOVE, EDIT, FETCH_LIST } from "./type";
 
 const initialState = {
-  list: []
+  list: [],
 };
 
 export default function (oldState = initialState, action) {
@@ -21,6 +21,9 @@ export default function (oldState = initialState, action) {
       return {
         list: newList,
       };
+
+    case EDIT:
+      return {};
 
     default:
       return oldState;
