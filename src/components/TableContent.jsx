@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { RemoveStudentRequestAC } from '../redux/action';
+import { RemoveStudentRequestAC, EditRequestAC } from '../redux/action';
+import TableContentEach from './TableContentEach';
 
 class TableContent extends Component {
     constructor(props) {
@@ -10,33 +11,9 @@ class TableContent extends Component {
 
     render() {
         return (
-            this.props.studentList.map(student => {
-                return (
-                    <tr key={student[0].value}>
-                        <td>{student[0].value}</td>
-                        <td>{student[1].value}</td>
-                        <td>{student[2].value}</td>
-                        <td>{student[3].value}</td>
-                        <td>{student[4].value}</td>
-                        <td>
-                            <button onClick={() => this.props.removeStudent(student[0].value)}>Удалить</button>
-                        </td>
-                        <td>
-                            <button>Редактировать</button>
-                        </td>
-                    </tr>
-                )
-            })
+            this.props.studentList.map((student, index) => <TableContentEach  student={student} key={index}/>)
         );
     }
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        removeStudent: id => {
-            dispatch(RemoveStudentRequestAC(id));
-        }
-    };
 }
 
 function mapStateToProps(store) {
@@ -45,4 +22,4 @@ function mapStateToProps(store) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TableContent);
+export default connect(mapStateToProps, null)(TableContent);

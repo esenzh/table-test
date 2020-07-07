@@ -23,7 +23,9 @@ export default function (oldState = initialState, action) {
       };
 
     case EDIT:
-      return {};
+      console.log(action.payload)
+      
+      return oldState
 
     default:
       return oldState;

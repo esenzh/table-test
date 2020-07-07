@@ -20,7 +20,7 @@ class TableHeader extends Component {
 
 function mapStateToProps(store) {
     return {
-        studentList: store.list,
+        studentList: store.list
     };
 }
 

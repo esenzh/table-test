@@ -10,25 +10,25 @@ const proxyUrl = "https://cors-anywhere.herokuapp.com/"; // I faced a CORS issue
 //   };
 // };
 
-export const EditRequestAC = student => {
-  return async dispatch => {
+export const EditRequestAC = (student) => {
+  return async (dispatch) => {
     try {
-      await axios(
-        proxyUrl + "https://frontend-test.netbox.ru/",
-        {
-          method: "UPDATE",
-          data: {
-            id: student.id,
-            name: student.name,
-            age: student.age,
-            phone: student.phone,
-            email: student.email,
-          },
-        }
-      );
-      dispatch({type: EDIT, paylaod: student})
+      await axios(proxyUrl + "https://frontend-test.netbox.ru/", {
+        method: "POST",
+        body: {
+          id: student[0].id,
+          name: student[1].name,
+          age: student[2].age,
+          phone: student[3].phone,
+          email: student[4].email,
+        },
+      });
+      dispatch({ type: EDIT, payload: student });
     } catch (e) {
-      console.log(e);
+      dispatch({
+        type: SHOW_ERROR,
+        payload: "There is something wrong. Please, try again.",
+      });
     }
   };
 };
@@ -38,7 +38,7 @@ export const RemoveStudentRequestAC = (id) => {
     try {
       await axios(proxyUrl + "https://frontend-test.netbox.ru/", {
         method: "POST", // DELETE method is not allowed, that's why I used POST method
-        data: { id },
+        body: { id },
       });
       dispatch({ type: REMOVE, payload: id });
     } catch (e) {
