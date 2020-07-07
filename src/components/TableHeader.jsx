@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { SortTableAC } from '../redux/action';
 
 class TableHeader extends Component {
     constructor(props) {
@@ -11,19 +12,21 @@ class TableHeader extends Component {
         return (
             <tr>
                 <th>ID</th>
-                <th>Name</th>
+                <th className='tableTitles' onClick={() => this.props.handleSort('name')}>Name</th>
                 <th>Age</th>
                 <th>Phone</th>
-                <th>Email</th>
+                <th className='tableTitles' onClick={() => this.props.handleSort('email')}>Email</th>
             </tr>
         )
     }
 }
 
-function mapStateToProps(store) {
+function mapDispatchToProps(dispatch) {
     return {
-        studentList: store.list
+        handleSort: title => {
+            dispatch(SortTableAC(title))
+        }
     };
 }
 
-export default connect(mapStateToProps, null)(TableHeader);
+export default connect(null, mapDispatchToProps)(TableHeader);

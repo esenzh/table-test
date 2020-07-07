@@ -17,10 +17,10 @@ class Table extends Component {
     render() {
         return (
             <div>
-                <h1 id='title'>Table</h1>
+                <h2 id='title'>Table of Students</h2>
                 <table id='students'>
                     <thead>
-                           <TableHeader />
+                        <TableHeader />
                     </thead>
                     <tbody>
                         <TableContent />

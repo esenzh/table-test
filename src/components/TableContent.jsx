@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { RemoveStudentRequestAC, EditRequestAC } from '../redux/action';
 import TableContentEach from './TableContentEach';
 
 class TableContent extends Component {
@@ -19,6 +18,7 @@ class TableContent extends Component {
 function mapStateToProps(store) {
     return {
         studentList: store.list,
+        isLoading: store.isLoading // TODO: implement the loading spinner
     };
 }
 
