@@ -10,9 +10,11 @@ class TableHeader extends Component {
     render() {
         return (
             <tr>
-                {this.props.studentList[0] && this.props.studentList[0].map((field, index) => {
-                    return <th key={index}>{field.field} </th>
-                })}
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Phone</th>
+                <th>Email</th>
             </tr>
         )
     }
