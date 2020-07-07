@@ -16,7 +16,7 @@ const proxyUrl = "https://cors-anywhere.herokuapp.com/"; // I faced a CORS issue
 export const AddNewStudentAC = (student) => {
   return async (dispatch) => {
     try {
-      dispatch({ type: SHOW_LOADER, payload: true });
+      dispatch({ type: SHOW_LOADER });
       await axios(proxyUrl + "https://frontend-test.netbox.ru/", {
         method: "POST",
         body: {
@@ -27,9 +27,9 @@ export const AddNewStudentAC = (student) => {
         },
       });
       dispatch({ type: ADD_NEW_STUDENT, payload: student });
-      dispatch({ type: HIDE_LOADER, payload: false });
+      dispatch({ type: HIDE_LOADER });
     } catch (e) {
-      dispatch({ type: HIDE_LOADER, payload: false });
+      dispatch({ type: HIDE_LOADER });
       dispatch({
         type: SHOW_ERROR,
         payload: "There is something wrong. Please, try again.",
@@ -41,7 +41,7 @@ export const AddNewStudentAC = (student) => {
 export const EditRequestAC = (student) => {
   return async (dispatch) => {
     try {
-      dispatch({ type: SHOW_LOADER, payload: true });
+      dispatch({ type: SHOW_LOADER });
       await axios(proxyUrl + "https://frontend-test.netbox.ru/", {
         method: "POST",
         body: {
@@ -53,9 +53,9 @@ export const EditRequestAC = (student) => {
         },
       });
       dispatch({ type: EDIT, payload: student });
-      dispatch({ type: HIDE_LOADER, payload: false });
+      dispatch({ type: HIDE_LOADER });
     } catch (e) {
-      dispatch({ type: HIDE_LOADER, payload: false });
+      dispatch({ type: HIDE_LOADER });
       dispatch({
         type: SHOW_ERROR,
         payload: "There is something wrong. Please, try again.",
@@ -67,15 +67,15 @@ export const EditRequestAC = (student) => {
 export const RemoveStudentRequestAC = (id) => {
   return async (dispatch) => {
     try {
-      dispatch({ type: SHOW_LOADER, payload: true });
+      dispatch({ type: SHOW_LOADER });
       await axios(proxyUrl + "https://frontend-test.netbox.ru/", {
         method: "POST", // DELETE method is not allowed, that's why I used POST method
         body: { id },
       });
       dispatch({ type: REMOVE, payload: id });
-      dispatch({ type: HIDE_LOADER, payload: false });
+      dispatch({ type: HIDE_LOADER });
     } catch (e) {
-      dispatch({ type: HIDE_LOADER, payload: false });
+      dispatch({ type: HIDE_LOADER });
       dispatch({
         type: SHOW_ERROR,
         payload: "There is something wrong. Please, try again.",
@@ -86,14 +86,14 @@ export const RemoveStudentRequestAC = (id) => {
 
 export const fetchListAC = () => {
   return async (dispatch) => {
-    dispatch({ type: SHOW_LOADER, payload: true });
     try {
+      dispatch({ type: SHOW_LOADER});
       const response = await axios.get(`https://frontend-test.netbox.ru/`);
       const data = response.data;
       dispatch({ type: FETCH_LIST, payload: data });
-      dispatch({ type: HIDE_LOADER, payload: false });
+      dispatch({ type: HIDE_LOADER });
     } catch (e) {
-      dispatch({ type: HIDE_LOADER, payload: false });
+      dispatch({ type: HIDE_LOADER });
       dispatch({
         type: SHOW_ERROR,
         payload: "There is something wrong. Please, try again.",

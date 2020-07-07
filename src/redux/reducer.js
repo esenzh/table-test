@@ -11,8 +11,7 @@ import {
 
 const initialState = {
   list: [],
-  isLoading: false,
-  isSorted: false,
+  isLoading: false
 };
 
 export default function (oldState = initialState, action) {

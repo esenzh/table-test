@@ -18,7 +18,6 @@ class TableContent extends Component {
 function mapStateToProps(store) {
     return {
         studentList: store.list,
-        isLoading: store.isLoading // TODO: implement the loading spinner
     };
 }
 
