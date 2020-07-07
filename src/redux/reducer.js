@@ -1,5 +1,5 @@
 import {
-  ADD,
+  ADD_NEW_STUDENT,
   REMOVE,
   EDIT,
   FETCH_LIST,
@@ -23,9 +23,17 @@ export default function (oldState = initialState, action) {
         isLoading: oldState.isLoading,
       };
 
-    case ADD:
+    case ADD_NEW_STUDENT:
+      const randomID = Math.random().toString(36).substr(2, 4);
+      const newStudent = [
+        { field: "ID", value: randomID, type: "integer" },
+        { field: "Name", value: action.payload.name, type: "string" },
+        { field: "Age", value: action.payload.age, type: "integer" },
+        { field: "Phone", value: action.payload.phone, type: "string" },
+        { field: "E-mail", value: action.payload.email, type: "string" },
+      ];
       return {
-        list: [...oldState, action.payload],
+        list: [...oldState.list, newStudent],
         isLoading: oldState.isLoading,
       };
 
@@ -73,7 +81,7 @@ export default function (oldState = initialState, action) {
         list: oldState.list,
         isLoading: oldState.isLoading,
       };
-      
+
     case SORT_EMAIL:
       oldState.list.sort(function (a, b) {
         if (a[4].value > b[4].value) {

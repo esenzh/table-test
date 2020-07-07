@@ -31,3 +31,7 @@
   .tableTitles {
     cursor: pointer;
   }
+
+  #addStudet {
+    text-align: center;
+  }
