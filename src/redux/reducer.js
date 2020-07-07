@@ -78,7 +78,7 @@ export default function (oldState = initialState, action) {
       });
 
       return {
-        list: oldState.list,
+        list: [...oldState.list],
         isLoading: oldState.isLoading,
       };
 
@@ -93,7 +93,7 @@ export default function (oldState = initialState, action) {
         return 0;
       });
       return {
-        list: oldState.list,
+        list: [...oldState.list],
         isLoading: oldState.isLoading,
       };
 

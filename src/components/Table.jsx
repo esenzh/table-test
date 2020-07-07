@@ -43,7 +43,8 @@ class Table extends Component {
                         <TableContent />
                     </tbody>
                 </table>
-            </div>);
+            </div>
+        );
     }
 }
 

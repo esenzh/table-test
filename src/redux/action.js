@@ -26,7 +26,7 @@ export const AddNewStudentAC = (student) => {
           email: student.email,
         },
       });
-      dispatch({type: ADD_NEW_STUDENT, payload: student})
+      dispatch({ type: ADD_NEW_STUDENT, payload: student });
       dispatch({ type: HIDE_LOADER, payload: false });
     } catch (e) {
       dispatch({ type: HIDE_LOADER, payload: false });

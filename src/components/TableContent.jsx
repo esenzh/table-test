@@ -10,7 +10,7 @@ class TableContent extends Component {
 
     render() {
         return (
-            this.props.studentList.map((student, index) => <TableContentEach  student={student} key={index}/>)
+            this.props.studentList.map((student, index) => <TableContentEach student={student} key={index} />)
         );
     }
 }

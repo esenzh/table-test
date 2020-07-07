@@ -46,7 +46,6 @@ class AddNewStudent extends Component {
                 <Form onSubmit={this.handleSubmit}>
                     <ModalHeader toggle={this.props.toggle}>Добавить нового студента</ModalHeader>
                     <ModalBody>
-
                         <FormGroup>
                             <Label for="name">Имя</Label>
                             <Input type="text" name="name" id="name" onChange={this.handleOnChange} required />
